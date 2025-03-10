@@ -1,6 +1,7 @@
 import { UUID_NIL } from './constants'
 import type { IChatItem } from './chat/type'
 import type { ChatItem, ChatItemInTree } from './types'
+import './array.polyfill'
 
 async function decodeBase64AndDecompress(base64String: string) {
   const binaryString = atob(base64String)
