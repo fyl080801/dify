@@ -1,7 +1,6 @@
 import { UUID_NIL } from './constants'
 import type { IChatItem } from './chat/type'
 import type { ChatItem, ChatItemInTree } from './types'
-import './array.polyfill'
 
 async function decodeBase64AndDecompress(base64String: string) {
   const binaryString = atob(base64String)
@@ -101,7 +100,7 @@ function getThreadMessages(tree: ChatItemInTree[], targetMessageId?: string): Ch
   let targetNode: ChatItemInTree | undefined
 
   // find path to the target message
-  const stack = tree.toReversed().map(rootNode => ({
+  const stack = tree.slice().reverse().map(rootNode => ({
     node: rootNode,
     path: [rootNode],
   }))
